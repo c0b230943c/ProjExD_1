@@ -17,10 +17,10 @@ def main():
         for event in pg.event.get():
             if event.type == pg.QUIT: return
 
-        screen.blit(bg_img, [0, 0])
-        ko_rect = ko_img.get_rect()
+        screen.blit(bg_img, [-(tmr%800), 0])
+        ko_rect = ko_img.get_rect() #こうかとんのRect抽出
         ko_rect.center = 300, 200
-        screen.blit(ko_img, ko_rect)
+        screen.blit(ko_img, ko_rect) #こうかとんRectの貼り付け
         pg.display.update()
         tmr += 1        
         clock.tick(200)
