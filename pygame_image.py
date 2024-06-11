@@ -13,6 +13,8 @@ def main():
     bg_img_2 = pg.transform.flip(bg_img,True,False)
     ko_img = pg.image.load("fig/3.png")
     ko_img = pg.transform.flip(ko_img,True,False)
+    ko_rect = ko_img.get_rect() #こうかとんのRect抽出
+    ko_rect.center = 300, 200
     tmr = 0
     while True:
         for event in pg.event.get():
@@ -23,9 +25,17 @@ def main():
         screen.blit(bg_img_2,[-x+1600,0])
         screen.blit(bg_img, [-x+3200, 0])
         screen.blit(bg_img_2,[-x+4800,0])
-        ko_rect = ko_img.get_rect() #こうかとんのRect抽出
-        ko_rect.center = 300, 200
+        key_lst = pg.key.get_pressed()
+        if key_lst[pg.K_UP]:
+            ko_rect.move_ip((0,-1))
+        if key_lst[pg.K_DOWN]:
+            ko_rect.move_ip((0,1))
+        if key_lst[pg.K_LEFT]:
+            ko_rect.move_ip((-1,0))
+        if key_lst[pg.K_RIGHT]:
+            ko_rect.move_ip((1,0))
         screen.blit(ko_img, ko_rect) #こうかとんRectの貼り付け
+
         pg.display.update()
         tmr += 1        
         clock.tick(200)
