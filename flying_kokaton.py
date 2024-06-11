@@ -34,7 +34,7 @@ def main():
         if key_lst[pg.K_LEFT]:
             mx = -1
         if key_lst[pg.K_RIGHT]:
-            mx = 3
+            mx = 2
         ko_rect.move_ip((-1+mx,0+my))
         screen.blit(ko_img, ko_rect) #こうかとんRectの貼り付け
 
